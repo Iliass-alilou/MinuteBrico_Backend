@@ -1,12 +1,10 @@
-package com.pi.MinuteBrico.services;
+/*package com.pi.MinuteBrico.services;
 
 import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
-
 import org.springframework.stereotype.Service;
-
 import com.pi.MinuteBrico.models.User;
 import com.pi.MinuteBrico.repository.UserRepository;
 
@@ -32,4 +30,4 @@ public class UserService {
 	public Optional<User> findUserByEmailAndPassword(String email, String password) {
 		return userRepository.findByEmailAndPassword(email, password);
 	}
-}
+}*/

@@ -1,4 +1,4 @@
-package com.pi.MinuteBrico.controllers;
+/*package com.pi.MinuteBrico.controllers;
 
 import java.util.List;
 import java.util.Map;
@@ -45,4 +45,4 @@ public class UserController {
 		return null;
 
 	}
-}
+}*/
