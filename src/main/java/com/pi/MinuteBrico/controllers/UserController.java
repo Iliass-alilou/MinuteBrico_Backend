@@ -1,30 +1,31 @@
-/*package com.pi.MinuteBrico.controllers;
+package com.pi.MinuteBrico.controllers;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.pi.MinuteBrico.models.User;
-import com.pi.MinuteBrico.services.UserService;
+import com.pi.MinuteBrico.models.AppUser;
+
+import com.pi.MinuteBrico.services.AppUserService;
+
 
 @RestController
 public class UserController {
 
 	@Autowired
-	private UserService userService;
+	private AppUserService userService;
 	@CrossOrigin()
 	@GetMapping("/user")
-	public List<User> index(@RequestParam(value = "search", required = false) String searchText) {
+	public List<AppUser> index(@RequestParam(value = "search", required = false) String searchText) {
 		if (searchText == null) {
 			return userService.findAll();
 		}
 		return userService.findBySearch(searchText);
 	}
 	
-	@CrossOrigin()
+	/*@CrossOrigin()
 	@PostMapping("/user")
 	public String create(@RequestBody Map<String, Object> userMap) {
 		System.out.println(userMap);
@@ -44,5 +45,5 @@ public class UserController {
 		}
 		return null;
 
-	}
-}*/
+	}*/
+}

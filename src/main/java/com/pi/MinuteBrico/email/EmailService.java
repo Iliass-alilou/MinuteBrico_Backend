@@ -12,7 +12,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 @Service
-@AllArgsConstructor
+//@AllArgsConstructor
 public class EmailService implements EmailSender{
 
     private final static Logger LOGGER = LoggerFactory

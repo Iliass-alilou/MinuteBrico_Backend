@@ -11,9 +11,9 @@ import com.pi.MinuteBrico.models.AppUser;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@NoArgsConstructor
+//@Getter
+//@Setter
+//@NoArgsConstructor
 @Entity
 public class ConfirmationToken {
 

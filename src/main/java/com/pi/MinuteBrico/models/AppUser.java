@@ -12,10 +12,10 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
 
-@Getter
-@Setter
-@EqualsAndHashCode
-@NoArgsConstructor
+//@Getter
+//@Setter
+//@EqualsAndHashCode
+//@NoArgsConstructor
 @Entity
 @Table(name="users")
 public class AppUser implements UserDetails {

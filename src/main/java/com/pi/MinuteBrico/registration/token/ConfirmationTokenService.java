@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+//@AllArgsConstructor
 public class ConfirmationTokenService {
 
     private final ConfirmationTokenRepository confirmationTokenRepository;

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.pi.MinuteBrico.models.AppUser;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -22,5 +23,9 @@ public interface AppUserRepository
     @Query("UPDATE AppUser a " +
             "SET a.enabled = TRUE WHERE a.email = ?1")
     int enableAppUser(String email);
+
+	List<AppUser> findByEmailContainingOrFirstNameContainingOrLastNameContaining(String email, String firstName,String lastName);
+    
+    
 
 }

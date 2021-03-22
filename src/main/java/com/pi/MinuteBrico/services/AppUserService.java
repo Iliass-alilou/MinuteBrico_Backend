@@ -13,10 +13,11 @@ import com.pi.MinuteBrico.registration.token.ConfirmationTokenService;
 import com.pi.MinuteBrico.repository.AppUserRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Service
-@AllArgsConstructor
+//@AllArgsConstructor
 public class AppUserService implements UserDetailsService {
 
     private final static String USER_NOT_FOUND_MSG =
@@ -83,4 +84,15 @@ public class AppUserService implements UserDetailsService {
     public int enableAppUser(String email) {
         return appUserRepository.enableAppUser(email);
     }
+    
+    
+    // all methodes that will be aplicated on users
+    
+    public List<AppUser> findAll() {
+		return  appUserRepository.findAll();
+	}
+    
+    public List<AppUser> findBySearch(String searchText) {
+		return appUserRepository.findByEmailContainingOrFirstNameContainingOrLastNameContaining(searchText,searchText,searchText);
+	}
 }
