@@ -25,6 +25,8 @@ public interface AppUserRepository
     int enableAppUser(String email);
 
 	List<AppUser> findByEmailContainingOrFirstNameContainingOrLastNameContaining(String email, String firstName,String lastName);
+
+	Optional<AppUser> findByEmailAndPassword(String email, String password);
     
     
 

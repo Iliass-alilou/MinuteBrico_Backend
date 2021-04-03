@@ -1,6 +1,6 @@
 package com.pi.MinuteBrico.services;
 
-import lombok.AllArgsConstructor;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,6 +14,7 @@ import com.pi.MinuteBrico.repository.AppUserRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -95,4 +96,10 @@ public class AppUserService implements UserDetailsService {
     public List<AppUser> findBySearch(String searchText) {
 		return appUserRepository.findByEmailContainingOrFirstNameContainingOrLastNameContaining(searchText,searchText,searchText);
 	}
+
+	public Optional<AppUser> findUserByEmailAndPassword(String email, String password) {
+		return appUserRepository.findByEmailAndPassword(email, password);
+	}
+    
 }
+

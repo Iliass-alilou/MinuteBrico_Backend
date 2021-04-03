@@ -1,9 +1,6 @@
 package com.pi.MinuteBrico.registration.token;
 
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -11,9 +8,6 @@ import com.pi.MinuteBrico.models.AppUser;
 
 import java.time.LocalDateTime;
 
-//@Getter
-//@Setter
-//@NoArgsConstructor
 @Entity
 public class ConfirmationToken {
 

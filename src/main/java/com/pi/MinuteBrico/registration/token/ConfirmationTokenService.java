@@ -1,6 +1,5 @@
 package com.pi.MinuteBrico.registration.token;
 
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
