@@ -100,6 +100,12 @@ public class AppUserService implements UserDetailsService {
 	public Optional<AppUser> findUserByEmailAndPassword(String email, String password) {
 		return appUserRepository.findByEmailAndPassword(email, password);
 	}
+	
+	
+	
+   
+    
+	
     
 }
 

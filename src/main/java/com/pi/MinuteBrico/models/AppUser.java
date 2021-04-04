@@ -5,13 +5,15 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 
 
 @Entity
 @Table(name="users")
-public class AppUser implements UserDetails {
+public class AppUser implements Serializable ,UserDetails {
 
 
     /**
@@ -107,5 +109,7 @@ public class AppUser implements UserDetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	
     
 }

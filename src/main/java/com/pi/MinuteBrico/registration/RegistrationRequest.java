@@ -5,8 +5,7 @@ import lombok.EqualsAndHashCode;
 
 import lombok.ToString;
 
-//@Getter
-//@AllArgsConstructor
+
 @EqualsAndHashCode
 @ToString
 public class RegistrationRequest {
