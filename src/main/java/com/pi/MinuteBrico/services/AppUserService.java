@@ -18,7 +18,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-//@AllArgsConstructor
 public class AppUserService implements UserDetailsService {
 
     private final static String USER_NOT_FOUND_MSG =
@@ -58,8 +57,10 @@ public class AppUserService implements UserDetailsService {
             throw new IllegalStateException("email already taken");
         }
 
-        String encodedPassword = bCryptPasswordEncoder
-                .encode(appUser.getPassword());
+       /* String encodedPassword = bCryptPasswordEncoder
+                .encode(appUser.getPassword());*/
+        
+        String encodedPassword = appUser.getPassword();
 
         appUser.setPassword(encodedPassword);
 
@@ -81,6 +82,26 @@ public class AppUserService implements UserDetailsService {
 
         return token;
     }
+    
+    //	Sign In user
+    /*public boolean findUserByEmailAndPasswordEncrypted(AppUser appUser) {
+    	
+    	String encodedPassword = bCryptPasswordEncoder
+                .encode(appUser.getPassword());
+    	
+    	String psswordCrypted = appUser.getPassword();
+    	
+    	 boolean userExistsInDatabase = appUserRepository
+                 .findByEmail(appUser.getEmail())	
+                 .isPresent();
+    	 
+    	 if(userExistsInDatabase && (encodedPassword == psswordCrypted ) ) {
+    		 return true;
+    	 }	
+    	return false;
+    }*/
+    
+    
 
     public int enableAppUser(String email) {
         return appUserRepository.enableAppUser(email);
@@ -100,12 +121,6 @@ public class AppUserService implements UserDetailsService {
 	public Optional<AppUser> findUserByEmailAndPassword(String email, String password) {
 		return appUserRepository.findByEmailAndPassword(email, password);
 	}
-	
-	
-	
-   
-    
-	
-    
+	    
 }
 

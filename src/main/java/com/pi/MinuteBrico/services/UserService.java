@@ -5,8 +5,10 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import com.pi.MinuteBrico.models.User;
+
+import com.pi.MinuteBrico.models.AppUser;
 import com.pi.MinuteBrico.repository.UserRepository;
+
 
 @Service
 @Transactional
@@ -18,16 +20,17 @@ public class UserService {
 		super();
 		this.userRepository = userRepository;
 	}
-	public List<User> findAll() {
+	public List<AppUser> findAll() {
 		return  userRepository.findAll();
 	}
-	public List<User> findBySearch(String searchText) {
+	public List<AppUser> findBySearch(String searchText) {
 		return userRepository.findByEmailContainingOrFirstNameContainingOrLastNameContaining(searchText,searchText,searchText);
 	}
-	public User saveUser(User user) {
+	public AppUser saveUser(AppUser user) {
 		return userRepository.save(user);
 	}
-	public Optional<User> findUserByEmailAndPassword(String email, String password) {
+	public Optional<AppUser> findUserByEmailAndPassword(String email, String password) {
 		return userRepository.findByEmailAndPassword(email, password);
 	}
-}*/
+}
+*/

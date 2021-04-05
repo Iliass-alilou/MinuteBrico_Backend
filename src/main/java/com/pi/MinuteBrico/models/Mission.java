@@ -29,18 +29,18 @@ public class Mission {
 		private String domaine;
 		private String ville;
 		
-		 @ManyToOne
+		/* @ManyToOne
 		 @JoinColumn(
 		            nullable = false,
 		            name = "app_user_id"
 		    )
-		private AppUser appUser;
+		private AppUser appUser;*/
 		
 	    public Mission() {
 			
 		}
 	    
-	    public Mission(int id,String description,int etatMission,String state,int Duree,String domaine,String ville,String adresse,String title) {
+	    public Mission(int id,String description,int etatMission,String state,int Duree,String domaine,String ville,String adresse,String title /*,AppUser appUser*/) {
 			setId(id);
 			setDescription(description);
 			setState(state);
@@ -51,6 +51,7 @@ public class Mission {
 			setEtatMission(etatMission);
 			setImage(image);
 			setTitle(title);
+			//setAppUser(appUser);
 		}
 	    
 	    public Mission(Map<String,Object> userMap) {
@@ -66,16 +67,26 @@ public class Mission {
 			this.etatMission=(int) userMap.get("etatMission");
 			this.image=(String) userMap.get("image");
 			this.title=(String) userMap.get("title");
+			//this.appUser=(AppUser)userMap.get("appUser");
 		}
 		
 
 
 	    //getters and setters
 	    
-
+            
+	    
 		public String getImage() {
 			return image;
 		}
+		/*public AppUser getAppUser() {
+			return appUser;
+		}
+
+		public void setAppUser(AppUser appUser) {
+			this.appUser = appUser;
+		}*/
+
 		public String getTitle() {
 			return title;
 		}

@@ -110,6 +110,14 @@ public class AppUser implements Serializable ,UserDetails {
 		this.password = password;
 	}
 
+	@Override
+	public String toString() {
+		return "AppUser [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", password=" + password + ", appUserRole=" + appUserRole + ", locked=" + locked + ", enabled="
+				+ enabled + "]";
+	}
+
+	
 	
     
 }

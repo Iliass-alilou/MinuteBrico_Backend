@@ -1,8 +1,5 @@
 package com.pi.MinuteBrico.security.config;
 
-
-
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -32,17 +29,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
-        http   
-                .cors()
-                .and()
-                .csrf().disable()
+           
+           http .cors();
+           
+           http .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/registration/**")
+                    .antMatchers("/signIn","/user","/missions","/registration/**")  ///"/login","/signIn","/user","/missions",
                     .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
                 .formLogin();
+           
+           
                
                
         
