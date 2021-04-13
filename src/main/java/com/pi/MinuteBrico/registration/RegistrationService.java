@@ -7,7 +7,6 @@ import com.pi.MinuteBrico.registration.token.ConfirmationToken;
 import com.pi.MinuteBrico.registration.token.ConfirmationTokenService;
 import com.pi.MinuteBrico.services.AppUserService;
 
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -32,5 +32,4 @@ public class UserService {
 	public Optional<AppUser> findUserByEmailAndPassword(String email, String password) {
 		return userRepository.findByEmailAndPassword(email, password);
 	}
-}
-*/
+}*/

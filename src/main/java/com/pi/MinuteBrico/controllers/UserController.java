@@ -43,8 +43,6 @@ public class UserController {
 	@CrossOrigin()
 	@PostMapping("/signIn")
 	public AppUser signIn(@RequestBody Map<String, Object> userInfo) {
-		
-		
 		Optional<AppUser> user = userService.findUserByEmailAndPassword(userInfo.get("email").toString(),
 				userInfo.get("password").toString());
 		if (user.isPresent()) {

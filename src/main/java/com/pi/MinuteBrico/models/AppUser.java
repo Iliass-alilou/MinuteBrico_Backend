@@ -31,12 +31,15 @@ public class AppUser implements Serializable ,UserDetails {
             generator = "client_sequence"
     )
     private Long id;
+	private String userId="Iliass";
     private String firstName;
     private String lastName;
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
+    
+    
     private Boolean locked = false;
     private Boolean enabled = false;
 
@@ -62,9 +65,19 @@ public class AppUser implements Serializable ,UserDetails {
                 new SimpleGrantedAuthority(appUserRole.name());
         return Collections.singletonList(authority);
     }
+    
+    
 
     
-    public String getEmail() {
+    public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
 		return email;
 	}
 
@@ -108,6 +121,12 @@ public class AppUser implements Serializable ,UserDetails {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	
+	
+	public String getUserId() {
+		return userId;
 	}
 
 	@Override
