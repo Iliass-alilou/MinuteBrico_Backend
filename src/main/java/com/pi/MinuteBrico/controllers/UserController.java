@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.pi.MinuteBrico.models.AppUser;
-
 import com.pi.MinuteBrico.services.AppUserService;
 
 
@@ -30,16 +29,24 @@ public class UserController {
 	}
 	
 	
-	/*@CrossOrigin()
-	@PostMapping("/user")
-	public String create(@RequestBody Map<String, Object> userMap) {
-		System.out.println(userMap);
-		User user = new User(userMap);
-		userService.saveUser(user);
-		return "Utilisateur ajouté";
+	@CrossOrigin()
+	@PutMapping("/user/{id}")
+	public AppUser update(@PathVariable String id, @RequestBody Map<String, String> body) {
+		Long userId = Long.parseLong(id);
+		Optional<AppUser> user = userService.findById(userId);
+		if (user.isPresent()) {
+			AppUser appUser = user.get();
+			appUser.setFirstName(body.get("firstName"));
+			appUser.setLastName(body.get("lastName"));
+			appUser.setPassword(body.get("password"));
 
-	}*/
+			return userService.saveUser(appUser);
+		}
+		return null;
+	}
 
+	
+	
 	@CrossOrigin()
 	@PostMapping("/signIn")
 	public AppUser signIn(@RequestBody Map<String, Object> userInfo) {

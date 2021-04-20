@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.pi.MinuteBrico.models.AppUser;
+import com.pi.MinuteBrico.models.Bricoleur;
 import com.pi.MinuteBrico.registration.token.ConfirmationToken;
 import com.pi.MinuteBrico.registration.token.ConfirmationTokenService;
 import com.pi.MinuteBrico.repository.AppUserRepository;
@@ -83,24 +84,6 @@ public class AppUserService implements UserDetailsService {
         return token;
     }
     
-    //	Sign In user
-    /*public boolean findUserByEmailAndPasswordEncrypted(AppUser appUser) {
-    	
-    	String encodedPassword = bCryptPasswordEncoder
-                .encode(appUser.getPassword());
-    	
-    	String psswordCrypted = appUser.getPassword();
-    	
-    	 boolean userExistsInDatabase = appUserRepository
-                 .findByEmail(appUser.getEmail())	
-                 .isPresent();
-    	 
-    	 if(userExistsInDatabase && (encodedPassword == psswordCrypted ) ) {
-    		 return true;
-    	 }	
-    	return false;
-    }*/
-    
     
 
     public int enableAppUser(String email) {
@@ -121,6 +104,13 @@ public class AppUserService implements UserDetailsService {
 	public Optional<AppUser> findUserByEmailAndPassword(String email, String password) {
 		return appUserRepository.findByEmailAndPassword(email, password);
 	}
-	    
+	
+	public Optional<AppUser> findById(Long id) {
+		return appUserRepository.findById(id);
+	}
+	   
+	public AppUser saveUser(AppUser user) {
+		return appUserRepository.save(user);
+	}
 }
 

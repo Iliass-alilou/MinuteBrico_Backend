@@ -1,35 +1,35 @@
 package com.pi.MinuteBrico.models;
 
 import java.util.Map;
+import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+
+
+
 @Entity
 @Table(name = "Bricoleur")
-public class Bricoleur  {
+public class Bricoleur implements Serializable  {
 
 	/**
-	 * 
+	 *@author iliass Alilou
 	 */
 	private static final long serialVersionUID = 1L;
-	@SequenceGenerator(
-            name = "Bricoleur_sequence",
-            sequenceName = "Bricoleur_sequence",
-            allocationSize = 1
-    )
-    @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "Bricoleur_sequence"
-    )
-	private Long id; 
 	
-	//sera de type Byte just for testing post man now
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id; 
 	private String photo;
 	private String firstName;
 	private String lastName;
@@ -38,24 +38,30 @@ public class Bricoleur  {
 	private String birthDate;
 	private String adresse;
 	
-	// private Certification certification;
-	// private Diplomes diplomes;
-	// private Langues langues;
+	@OneToMany(/*fetch = FetchType.LAZY , targetEntity = Category.class,*/ cascade = CascadeType.ALL)
+	@JoinColumn(name = "Category_Bricoleur",referencedColumnName = "id")
+	private List<Category> category ;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Certification_Bricoleur",referencedColumnName = "id")
+	private List<Certification> certifications;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "diplomes_Bricoleur",referencedColumnName = "id")
+	private List<Diplomes> diplomes;
 	
 
 	public Bricoleur() {
 		
 	}
-
-
 	public Bricoleur(String photo,
-			         String firstName,
-			         String lastName,
-			         String email,
-			         String phone,
-			         String birthDate,
-			         String adresse) {
+					 String firstName, 
+					 String lastName, 
+					 String email, 
+					 String phone, 
+					 String birthDate,
+					 String adresse
+			         ) {
 		super();
 		this.photo = photo;
 		this.firstName = firstName;
@@ -66,10 +72,8 @@ public class Bricoleur  {
 		this.adresse = adresse;
 	}
 
-	
-	
-	
-	public Bricoleur(Map<String,Object> bricoleurMap) {
+
+	/*public Bricoleur(Map<String,Object> bricoleurMap) {
 		super();
 
 		if (bricoleurMap.get("id") != null)
@@ -82,8 +86,54 @@ public class Bricoleur  {
 		this.phone = (String) bricoleurMap.get("phone");		
 		this.birthDate = (String) bricoleurMap.get("birthDate");		
 		this.adresse = (String) bricoleurMap.get("adresse");
+		this.category=(List<Category>)bricoleurMap.get("category");
+	}*/
+	
+	public Bricoleur(Bricoleur bricoleurMap) {
+		super();
+
+		if (bricoleurMap.getId() != null)
+			
+		this.id = (Long)bricoleurMap.getId();
+		this.photo = (String) bricoleurMap.getPhoto();
+		this.firstName = (String) bricoleurMap.getFirstName();
+		this.lastName = (String) bricoleurMap.getLastName();
+		this.email = (String) bricoleurMap.getEmail();
+		this.phone = (String) bricoleurMap.getPhone();		
+		this.birthDate = (String) bricoleurMap.getBirthDate();		
+		this.adresse = (String) bricoleurMap.getAdresse();
+		
+		this.category=(List<Category>)bricoleurMap.getCategory();
+		this.certifications=(List<Certification>)bricoleurMap.getCertifications();
+		this.diplomes=(List<Diplomes>)bricoleurMap.getDiplomes();
+	
 	}
 	
+	
+	
+	public List<Diplomes> getDiplomes() {
+		return diplomes;
+	}
+	public void setDiplomes(List<Diplomes> diplomes) {
+		this.diplomes = diplomes;
+	}
+	public List<Certification> getCertifications() {
+		return certifications;
+	}
+	public void setCertifications(List<Certification> certifications) {
+		this.certifications = certifications;
+	}
+	public List<Category> getCategory() {
+		return category;
+	}
+
+
+
+	public void setCategory(List<Category> category) {
+		this.category = category;
+	}
+
+
 
 	public Long getId() {
 		return id;
@@ -174,11 +224,8 @@ public class Bricoleur  {
 	@Override
 	public String toString() {
 		return "Bricoleur [id=" + id + ", photo=" + photo + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", email=" + email + ", phone=" + phone + ", birthDate=" + birthDate + ", adresse=" + adresse + "]";
+				+ ", email=" + email + ", phone=" + phone + ", birthDate=" + birthDate + ", adresse=" + adresse
+				+ ", category=" + category + "]";
 	}
-
-
-	
-
 	
 }

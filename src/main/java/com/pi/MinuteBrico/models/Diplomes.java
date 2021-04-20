@@ -1,5 +1,6 @@
 package com.pi.MinuteBrico.models;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import javax.persistence.Entity;
@@ -11,19 +12,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Diplome")
-public class Diplomes {
+public class Diplomes implements Serializable {
 
-	
-	@SequenceGenerator(
-            name = "Diplome_sequence",
-            sequenceName = "Diplome_sequence",
-            allocationSize = 1
-    )
-    @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "Diplome_sequence"
-    )
+    /**
+	 * @author iliass Alilou
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
 	private String school;
 	private String annee_entre;

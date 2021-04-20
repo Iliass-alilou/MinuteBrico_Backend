@@ -1,7 +1,6 @@
 package com.pi.MinuteBrico.controllers;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +12,14 @@ import com.pi.MinuteBrico.services.BricoleurService;
 
 @RestController
 public class BricoleurController {
+	/**
+	 * @author iliass Alilou
+	 */
 
 	@Autowired
 	private BricoleurService bricoleurService;
 
+	
 	// ! @route GET /user?search=iliass
 	// ! @desc returns all users, and search by email if search param provided
 	// ! @access public
@@ -40,9 +43,9 @@ public class BricoleurController {
 	
 	@CrossOrigin()
 	@PostMapping("/bricoleur")
-	public String create(@RequestBody Map<String, Object> bricoleurMap) {
-		System.out.println(bricoleurMap);
-		Bricoleur bricoleur = new Bricoleur(bricoleurMap);
+	public String create(@RequestBody /*Map<String, Object> bricoleurMap*/ Bricoleur bricoleur) {
+		//System.out.println(bricoleurMap);
+		//Bricoleur bricoleur = new Bricoleur(bricoleurMap);
 		bricoleurService.saveBricoleur(bricoleur);
 		return "Bricoleur ajouté";
 
@@ -52,7 +55,7 @@ public class BricoleurController {
 		// ! @desc modifies user in database. Body parameters needed :
 		// email, firstname, lastname, age, password, role
 		// ! @access public
-		@CrossOrigin()
+		/*@CrossOrigin()
 		@PutMapping("/bricoleur/{id}")
 		public Bricoleur update(@PathVariable String id, @RequestBody Map<String, String> body) {
 			Long bricoleurId = Long.parseLong(id);
@@ -66,11 +69,45 @@ public class BricoleurController {
 				b.setBirthDate(body.get("birthDate"));
 				b.setPhone(body.get("phone"));
 				b.setAdresse(body.get("adresse"));
+				b.setCategory(body.get("category"));
 
 				return bricoleurService.saveBricoleur(b);
 			}
 			return null;
+		}*/
+		
+	
+	/**
+	 * @author Chaimae Belhaje
+	 */
+	@CrossOrigin()
+	@PutMapping("/bricoleur/{id}")
+	public Bricoleur update(@PathVariable String id, @RequestBody Bricoleur body) {
+		Long bricoleurId = Long.parseLong(id);
+		Optional<Bricoleur> bricoleur = bricoleurService.findById(bricoleurId);
+		if (bricoleur.isPresent()) {
+			Bricoleur b = bricoleur.get();
+			b.setPhoto(body.getPhoto());
+			b.setEmail(body.getEmail());
+			b.setFirstName(body.getFirstName());
+			b.setLastName(body.getLastName());
+			b.setBirthDate(body.getBirthDate());
+			b.setPhone(body.getPhone());
+			b.setAdresse(body.getAdresse());
+			
+			b.setCategory(body.getCategory());
+			b.setCertifications(body.getCertifications());
+			b.setDiplomes(body.getDiplomes());
+
+			return bricoleurService.saveBricoleur(b);
 		}
+		return null;
+	}
+		
+		
+		
+		
+		
 		
 		// ! @route DELETE /user/id
 		// ! @desc deletes user with param id

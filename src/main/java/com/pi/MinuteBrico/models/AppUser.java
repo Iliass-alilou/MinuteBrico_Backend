@@ -9,6 +9,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 
 @Entity
@@ -31,7 +33,6 @@ public class AppUser implements Serializable ,UserDetails {
             generator = "client_sequence"
     )
     private Long id;
-	private String userId="Iliass";
     private String firstName;
     private String lastName;
     private String email;
@@ -58,6 +59,25 @@ public class AppUser implements Serializable ,UserDetails {
     public AppUser() {
     	
     }
+    
+    
+    //Modification 
+    public AppUser(Map<String,Object> userMap) {
+		super();
+
+		if (userMap.get("id") != null)
+			
+		this.id = (Long)userMap.get("id");
+		this.firstName = (String) userMap.get("firstName");
+		this.lastName = (String) userMap.get("lastName");
+		this.email = (String) userMap.get("email");
+		this.password = (String) userMap.get("password");		
+		
+	}
+    
+    
+    
+    
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -67,9 +87,17 @@ public class AppUser implements Serializable ,UserDetails {
     }
     
     
-
+   
     
-    public Long getId() {
+    public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
@@ -124,10 +152,6 @@ public class AppUser implements Serializable ,UserDetails {
 	}
 
 	
-	
-	public String getUserId() {
-		return userId;
-	}
 
 	@Override
 	public String toString() {

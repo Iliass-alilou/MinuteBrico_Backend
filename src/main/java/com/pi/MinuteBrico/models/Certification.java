@@ -1,29 +1,24 @@
 package com.pi.MinuteBrico.models;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Certification")
-public class Certification {
+public class Certification implements Serializable {
 
-	
-	@SequenceGenerator(
-            name = "Certification_sequence",
-            sequenceName = "Certification_sequence",
-            allocationSize = 1
-    )
-    @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "Certification_sequence"
-    )
+    /**
+	 * @author iliass Alilou
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;	
 	private String name_certification;
 	private String name_centre;
@@ -34,7 +29,11 @@ public class Certification {
 		
 	}
 	
-	public Certification(String name_certification, String name_centre, String date_obtention, String date_expiration) {
+	public Certification(String name_certification,
+			             String name_centre,
+			             String date_obtention,
+			             String date_expiration
+			             ) {
 		super();
 		this.name_certification = name_certification;
 		this.name_centre = name_centre;
