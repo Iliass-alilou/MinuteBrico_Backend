@@ -13,16 +13,8 @@ import javax.persistence.Table;
 @Table(name = "Langue")
 public class Langues {
 
-	@SequenceGenerator(
-            name = "Langue_sequence",
-            sequenceName = "Langue_sequence",
-            allocationSize = 1
-    )
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "Langue_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
 	private String name_language;
 	private String niveau;

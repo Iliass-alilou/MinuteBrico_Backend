@@ -50,6 +50,11 @@ public class Bricoleur implements Serializable  {
 	@JoinColumn(name = "diplomes_Bricoleur",referencedColumnName = "id")
 	private List<Diplomes> diplomes;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "langues_Bricoleur",referencedColumnName = "id")
+	private List<Langues> langues;
+	
+	
 
 	public Bricoleur() {
 		
@@ -106,10 +111,20 @@ public class Bricoleur implements Serializable  {
 		this.category=(List<Category>)bricoleurMap.getCategory();
 		this.certifications=(List<Certification>)bricoleurMap.getCertifications();
 		this.diplomes=(List<Diplomes>)bricoleurMap.getDiplomes();
+		this.langues=(List<Langues>)bricoleurMap.getLangues();
 	
 	}
 	
 	
+	
+	
+	
+	public List<Langues> getLangues() {
+		return langues;
+	}
+	public void setLangues(List<Langues> langues) {
+		this.langues = langues;
+	}
 	
 	public List<Diplomes> getDiplomes() {
 		return diplomes;

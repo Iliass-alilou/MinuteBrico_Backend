@@ -98,6 +98,7 @@ public class BricoleurController {
 			b.setCategory(body.getCategory());
 			b.setCertifications(body.getCertifications());
 			b.setDiplomes(body.getDiplomes());
+			b.setLangues(body.getLangues());
 
 			return bricoleurService.saveBricoleur(b);
 		}
