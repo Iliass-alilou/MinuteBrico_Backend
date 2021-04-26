@@ -39,6 +39,8 @@ public class Bricoleur implements Serializable  {
 	private String birthDate;
 	private String adresse;
 	
+	private String token;
+	
 	@OneToMany(/*fetch = FetchType.LAZY , targetEntity = Category.class,*/ cascade = CascadeType.ALL)
 	@JoinColumn(name = "Category_Bricoleur",referencedColumnName = "id")
 	private List<Category> category ;
@@ -67,7 +69,8 @@ public class Bricoleur implements Serializable  {
 					 String phone, 
 					 String birthDate,
 					 String adresse,
-					 String password
+					 String password,
+					 String token
 			         ) {
 		super();
 		this.photo = photo;
@@ -78,6 +81,7 @@ public class Bricoleur implements Serializable  {
 		this.birthDate = birthDate;
 		this.adresse = adresse;
 		this.password=password;
+		this.token=token;
 	}
 
 
@@ -111,6 +115,7 @@ public class Bricoleur implements Serializable  {
 		this.birthDate = (String) bricoleurMap.getBirthDate();		
 		this.adresse = (String) bricoleurMap.getAdresse();
 		this.password=(String)bricoleurMap.getPassword();
+		this.token=(String)bricoleurMap.getToken();
 		
 		this.category=(List<Category>)bricoleurMap.getCategory();
 		this.certifications=(List<Certification>)bricoleurMap.getCertifications();
@@ -154,7 +159,14 @@ public class Bricoleur implements Serializable  {
 
 	
 
+	
 
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
 	public String getPassword() {
 		return password;
 	}

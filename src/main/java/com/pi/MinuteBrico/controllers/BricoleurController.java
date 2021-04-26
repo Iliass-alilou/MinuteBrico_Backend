@@ -95,6 +95,7 @@ public class BricoleurController {
 			b.setBirthDate(body.getBirthDate());
 			b.setPhone(body.getPhone());
 			b.setAdresse(body.getAdresse());
+			b.setToken(body.getToken());
 			
 			b.setCategory(body.getCategory());
 			b.setCertifications(body.getCertifications());
