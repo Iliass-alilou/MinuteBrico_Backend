@@ -34,6 +34,10 @@ public class BricoleurService {
 	public Optional<Bricoleur> findById(Long id) {
 		return bricoleurRepository.findById(id);
 	}
+
+	public Optional<Bricoleur> findByToken(String token) {
+		return bricoleurRepository.findByToken(token);
+	}
 	
 	public Bricoleur saveBricoleur(Bricoleur bricoleur) {
 		return bricoleurRepository.save(bricoleur);

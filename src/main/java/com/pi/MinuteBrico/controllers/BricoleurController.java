@@ -106,7 +106,22 @@ public class BricoleurController {
 		}
 		return null;
 	}
-		
+	@CrossOrigin()
+	@PutMapping("/bricoleurup/{token}")
+	public Bricoleur updateadd(@PathVariable String token, @RequestBody Bricoleur body) {
+		Optional<Bricoleur> bricoleur = bricoleurService.findByToken(token);
+		if (bricoleur.isPresent()) {
+			Bricoleur b = bricoleur.get();
+			b.setPhoto(body.getPhoto());
+			b.setFirstName(body.getFirstName());
+			b.setLastName(body.getLastName());
+			b.setAdresse(body.getAdresse());
+			b.setLangues(body.getLangues());
+
+			return bricoleurService.saveBricoleur(b);
+		}
+		return null;
+	}
 		
 		
 		
