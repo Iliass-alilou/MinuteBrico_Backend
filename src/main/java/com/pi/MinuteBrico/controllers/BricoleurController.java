@@ -89,6 +89,7 @@ public class BricoleurController {
 			Bricoleur b = bricoleur.get();
 			b.setPhoto(body.getPhoto());
 			b.setEmail(body.getEmail());
+			b.setPassword(body.getPassword());
 			b.setFirstName(body.getFirstName());
 			b.setLastName(body.getLastName());
 			b.setBirthDate(body.getBirthDate());

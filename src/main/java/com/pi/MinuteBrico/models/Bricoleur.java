@@ -29,11 +29,12 @@ public class Bricoleur implements Serializable  {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id; 
+	private Long id;
 	private String photo;
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String password;
 	private String phone;
 	private String birthDate;
 	private String adresse;
@@ -65,7 +66,8 @@ public class Bricoleur implements Serializable  {
 					 String email, 
 					 String phone, 
 					 String birthDate,
-					 String adresse
+					 String adresse,
+					 String password
 			         ) {
 		super();
 		this.photo = photo;
@@ -75,6 +77,7 @@ public class Bricoleur implements Serializable  {
 		this.phone = phone;
 		this.birthDate = birthDate;
 		this.adresse = adresse;
+		this.password=password;
 	}
 
 
@@ -107,6 +110,7 @@ public class Bricoleur implements Serializable  {
 		this.phone = (String) bricoleurMap.getPhone();		
 		this.birthDate = (String) bricoleurMap.getBirthDate();		
 		this.adresse = (String) bricoleurMap.getAdresse();
+		this.password=(String)bricoleurMap.getPassword();
 		
 		this.category=(List<Category>)bricoleurMap.getCategory();
 		this.certifications=(List<Certification>)bricoleurMap.getCertifications();
@@ -148,8 +152,15 @@ public class Bricoleur implements Serializable  {
 		this.category = category;
 	}
 
+	
 
 
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -234,13 +245,16 @@ public class Bricoleur implements Serializable  {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-
+	
 	@Override
 	public String toString() {
-		return "Bricoleur [id=" + id + ", photo=" + photo + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", email=" + email + ", phone=" + phone + ", birthDate=" + birthDate + ", adresse=" + adresse
-				+ ", category=" + category + "]";
+		return "Bricoleur [id=" + id + ", password=" + password + ", photo=" + photo + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", email=" + email + ", phone=" + phone + ", birthDate=" + birthDate
+				+ ", adresse=" + adresse + ", category=" + category + ", certifications=" + certifications
+				+ ", diplomes=" + diplomes + ", langues=" + langues + "]";
 	}
+
+
+	
 	
 }
