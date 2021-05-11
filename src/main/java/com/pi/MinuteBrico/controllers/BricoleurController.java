@@ -77,9 +77,7 @@ public class BricoleurController {
 		}*/
 		
 	
-	/**
-	 * @author Chaimae Belhaje
-	 */
+	
 	@CrossOrigin()
 	@PutMapping("/bricoleur/{id}")
 	public Bricoleur update(@PathVariable String id, @RequestBody Bricoleur body) {

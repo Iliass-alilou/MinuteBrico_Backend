@@ -38,7 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     		     "/user","/user/{id}",
                     		     "/missions",
                     		     "/registration/**",
-                    		     "/bricoleur","/bricoleur/{id}","/bricoleurup/{token}")
+                    		     "/bricoleur","/bricoleur/{id}","/bricoleurup/{token}",
+                    		     "/Review_on_Brico")
                     .permitAll()                    
                 .anyRequest()
                 .authenticated()
