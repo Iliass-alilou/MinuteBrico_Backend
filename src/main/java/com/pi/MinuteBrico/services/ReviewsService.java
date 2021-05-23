@@ -1,9 +1,12 @@
 package com.pi.MinuteBrico.services;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.pi.MinuteBrico.models.AppUser;
 import com.pi.MinuteBrico.models.Reviews;
 import com.pi.MinuteBrico.repository.ReviewsRepository;
 
@@ -28,6 +31,10 @@ public class ReviewsService {
 	public Reviews saveReview(Reviews review) {
 		return reviewsRepository.save(review);
 		
+	}
+	
+	public List<Reviews> findAll() {
+		return  reviewsRepository.findAll();
 	}
 	
 	

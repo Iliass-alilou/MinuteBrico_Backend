@@ -1,19 +1,17 @@
 package com.pi.MinuteBrico.models;
 
-import java.util.Map;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 
 
@@ -38,6 +36,9 @@ public class Bricoleur implements Serializable  {
 	private String phone;
 	private String birthDate;
 	private String adresse;
+	
+    @Size(max = 256,min = 10)
+	private String descriptionProfil;
 	
 	private String token;
 	
@@ -70,7 +71,8 @@ public class Bricoleur implements Serializable  {
 					 String birthDate,
 					 String adresse,
 					 String password,
-					 String token
+					 String token,
+					 String descriptionProfil
 			         ) {
 		super();
 		this.photo = photo;
@@ -82,6 +84,7 @@ public class Bricoleur implements Serializable  {
 		this.adresse = adresse;
 		this.password=password;
 		this.token=token;
+		this.descriptionProfil = descriptionProfil;
 	}
 
 
@@ -116,6 +119,7 @@ public class Bricoleur implements Serializable  {
 		this.adresse = (String) bricoleurMap.getAdresse();
 		this.password=(String)bricoleurMap.getPassword();
 		this.token=(String)bricoleurMap.getToken();
+		this.descriptionProfil=(String)bricoleurMap.getDescriptionProfil();
 		
 		this.category=(List<Category>)bricoleurMap.getCategory();
 		this.certifications=(List<Certification>)bricoleurMap.getCertifications();
@@ -128,6 +132,12 @@ public class Bricoleur implements Serializable  {
 	
 	
 	
+	public String getDescriptionProfil() {
+		return descriptionProfil;
+	}
+	public void setDescriptionProfil(String descriptionProfil) {
+		this.descriptionProfil = descriptionProfil;
+	}
 	public List<Langues> getLangues() {
 		return langues;
 	}
@@ -257,16 +267,16 @@ public class Bricoleur implements Serializable  {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
 	@Override
 	public String toString() {
-		return "Bricoleur [id=" + id + ", password=" + password + ", photo=" + photo + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", email=" + email + ", phone=" + phone + ", birthDate=" + birthDate
-				+ ", adresse=" + adresse + ", category=" + category + ", certifications=" + certifications
-				+ ", diplomes=" + diplomes + ", langues=" + langues + "]";
+		return "Bricoleur [id=" + id + ", photo=" + photo + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", email=" + email + ", password=" + password + ", phone=" + phone + ", birthDate=" + birthDate
+				+ ", adresse=" + adresse + ", descriptionProfil=" + descriptionProfil + ", token=" + token
+				+ ", category=" + category + ", certifications=" + certifications + ", diplomes=" + diplomes
+				+ ", langues=" + langues + "]";
 	}
-
-
+	
+	
 	
 	
 }
