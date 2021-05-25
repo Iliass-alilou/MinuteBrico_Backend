@@ -58,51 +58,40 @@ public class Bricoleur implements Serializable  {
 	@JoinColumn(name = "langues_Bricoleur",referencedColumnName = "id")
 	private List<Langues> langues;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "reviews_Bricoleur",referencedColumnName = "id")
+	private List<Reviews> reviewsOnBrico;
 	
 
 	public Bricoleur() {
 		
 	}
-	public Bricoleur(String photo,
-					 String firstName, 
-					 String lastName, 
-					 String email, 
-					 String phone, 
-					 String birthDate,
-					 String adresse,
-					 String password,
-					 String token,
-					 String descriptionProfil
-			         ) {
+	
+
+
+	public Bricoleur(String photo, String firstName, String lastName, String email, String password, String phone,
+			String birthDate, String adresse, @Size(max = 256, min = 10) String descriptionProfil, String token,
+			List<Category> category, List<Certification> certifications, List<Diplomes> diplomes, List<Langues> langues,
+			List<Reviews> reviewsOnBrico) {
 		super();
 		this.photo = photo;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.password = password;
 		this.phone = phone;
 		this.birthDate = birthDate;
 		this.adresse = adresse;
-		this.password=password;
-		this.token=token;
 		this.descriptionProfil = descriptionProfil;
+		this.token = token;
+		this.category = category;
+		this.certifications = certifications;
+		this.diplomes = diplomes;
+		this.langues = langues;
+		this.reviewsOnBrico = reviewsOnBrico;
 	}
 
 
-	/*public Bricoleur(Map<String,Object> bricoleurMap) {
-		super();
-
-		if (bricoleurMap.get("id") != null)
-			
-		this.id = (Long)bricoleurMap.get("id");
-		this.photo = (String) bricoleurMap.get("photo");
-		this.firstName = (String) bricoleurMap.get("firstName");
-		this.lastName = (String) bricoleurMap.get("lastName");
-		this.email = (String) bricoleurMap.get("email");
-		this.phone = (String) bricoleurMap.get("phone");		
-		this.birthDate = (String) bricoleurMap.get("birthDate");		
-		this.adresse = (String) bricoleurMap.get("adresse");
-		this.category=(List<Category>)bricoleurMap.get("category");
-	}*/
 	
 	public Bricoleur(Bricoleur bricoleurMap) {
 		super();
@@ -125,6 +114,7 @@ public class Bricoleur implements Serializable  {
 		this.certifications=(List<Certification>)bricoleurMap.getCertifications();
 		this.diplomes=(List<Diplomes>)bricoleurMap.getDiplomes();
 		this.langues=(List<Langues>)bricoleurMap.getLangues();
+		this.reviewsOnBrico=(List<Reviews>)bricoleurMap.getReviewsOnBrico();
 	
 	}
 	
@@ -132,6 +122,18 @@ public class Bricoleur implements Serializable  {
 	
 	
 	
+	public List<Reviews> getReviewsOnBrico() {
+		return reviewsOnBrico;
+	}
+
+
+
+	public void setReviewsOnBrico(List<Reviews> reviewsOnBrico) {
+		this.reviewsOnBrico = reviewsOnBrico;
+	}
+
+
+
 	public String getDescriptionProfil() {
 		return descriptionProfil;
 	}
@@ -267,14 +269,18 @@ public class Bricoleur implements Serializable  {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+
+
 	@Override
 	public String toString() {
 		return "Bricoleur [id=" + id + ", photo=" + photo + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", email=" + email + ", password=" + password + ", phone=" + phone + ", birthDate=" + birthDate
 				+ ", adresse=" + adresse + ", descriptionProfil=" + descriptionProfil + ", token=" + token
 				+ ", category=" + category + ", certifications=" + certifications + ", diplomes=" + diplomes
-				+ ", langues=" + langues + "]";
+				+ ", langues=" + langues + ", reviewsOnBrico=" + reviewsOnBrico + "]";
 	}
+	
 	
 	
 	

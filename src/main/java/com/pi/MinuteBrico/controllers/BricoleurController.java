@@ -51,32 +51,6 @@ public class BricoleurController {
 
 	}
 	
-	// ! @route PUT /bricoleur/id
-		// ! @desc modifies user in database. Body parameters needed :
-		// email, firstname, lastname, age, password, role
-		// ! @access public
-		/*@CrossOrigin()
-		@PutMapping("/bricoleur/{id}")
-		public Bricoleur update(@PathVariable String id, @RequestBody Map<String, String> body) {
-			Long bricoleurId = Long.parseLong(id);
-			Optional<Bricoleur> bricoleur = bricoleurService.findById(bricoleurId);
-			if (bricoleur.isPresent()) {
-				Bricoleur b = bricoleur.get();
-				b.setPhoto(body.get("photo"));
-				b.setEmail(body.get("email"));
-				b.setFirstName(body.get("firstName"));
-				b.setLastName(body.get("lastName"));
-				b.setBirthDate(body.get("birthDate"));
-				b.setPhone(body.get("phone"));
-				b.setAdresse(body.get("adresse"));
-				b.setCategory(body.get("category"));
-
-				return bricoleurService.saveBricoleur(b);
-			}
-			return null;
-		}*/
-		
-	
 	
 	@CrossOrigin()
 	@PutMapping("/bricoleur/{id}")
@@ -100,6 +74,7 @@ public class BricoleurController {
 			b.setCertifications(body.getCertifications());
 			b.setDiplomes(body.getDiplomes());
 			b.setLangues(body.getLangues());
+			b.setReviewsOnBrico(body.getReviewsOnBrico());
 
 			return bricoleurService.saveBricoleur(b);
 		}
